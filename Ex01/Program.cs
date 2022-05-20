@@ -20,7 +20,7 @@ namespace SortingExample
             alunos[9] = "Sasuke";
 
             decimal[] notasA = new decimal[10];
-            notasA[0] = 100;
+            notasA[0] = 50;
             notasA[1] = 60;
             notasA[2] = 60;
             notasA[3] = 70;
@@ -29,7 +29,7 @@ namespace SortingExample
             notasA[6] = 30;
             notasA[7] = 60;
             notasA[8] = 60;
-            notasA[9] = 10;
+            notasA[9] = 20;
 
             decimal[] notasB = new decimal[10];
             notasB[0] = 100;
@@ -41,10 +41,10 @@ namespace SortingExample
             notasB[6] = 05;
             notasB[7] = 60;
             notasB[8] = 60;
-            notasB[9] = 60;
+            notasB[9] = 10;
 
             decimal[] notasC = new decimal[10];
-            notasC[0] = 50;
+            notasC[0] = 35;
             notasC[1] = 30;
             notasC[2] = 60;
             notasC[3] = 60;
@@ -53,7 +53,9 @@ namespace SortingExample
             notasC[6] = 20;
             notasC[7] = 60;
             notasC[8] = 60;
-            notasC[9] = 100;
+            notasC[9] = 15;
+
+            decimal[] notasOrdenadas = new decimal[3];
 
             decimal[] media = new decimal[10];
 
@@ -69,12 +71,20 @@ namespace SortingExample
             passou[8] = false;
             passou[9] = false;
 
+            for (int contador = 0; contador < 10; contador++)
+            {
+                notasOrdenadas[0] = notasA[contador];
+                notasOrdenadas[1] = notasB[contador];
+                notasOrdenadas[2] = notasC[contador];
+                OrdenarArray(notasA, notasB, notasC, notasOrdenadas);
+                notasA[contador] = notasOrdenadas[0];
+                notasB[contador] = notasOrdenadas[1];
+                notasC[contador] = notasOrdenadas[2];
 
+            }
 
 
             ChecarMedia(media, notasA, notasB, notasC, alunos, passou);
-
-
 
         }
 
@@ -84,13 +94,50 @@ namespace SortingExample
             System.Environment.Exit(0);
         }
 
+        static decimal[] OrdenarArray(decimal[] notasA, decimal[] notasB, decimal[] notasC, decimal[] notasOrdenadas)
+        {
+            bool flag = true;
+            decimal temp;
+            int numLength = notasOrdenadas.Length;
+
+
+
+
+
+            //sorting an array  
+            for (int i = 1; (i <= (numLength - 1)) && flag; i++)
+            {
+                flag = false;
+                for (int j = 0; j < (numLength - 1); j++)
+                {
+                    if (notasOrdenadas[j + 1] < notasOrdenadas[j])
+                    {
+                        temp = notasOrdenadas[j];
+                        notasOrdenadas[j] = notasOrdenadas[j + 1];
+                        notasOrdenadas[j + 1] = temp;
+                        flag = true;
+                    }
+                }
+            }
+
+            return (notasOrdenadas);
+            // Array.Sort(valor);
+        }
+
+
         static decimal[] ChecarMedia(decimal[] media, decimal[] notasA, decimal[] notasB, decimal[] notasC, string[] alunos, bool[] passou)
         {
+
             for (int i = 0; i < media.Length; i++)
             {
-                media[i] = (notasA[i] + notasB[i] + notasC[i]) / 3;
+                media[i] = (notasB[i] + notasC[i]) / 2;
 
-                Console.WriteLine($"A média do aluno {alunos[i]} é: ");
+                Console.WriteLine($"\nA menor nota é: {notasA[i]}");
+                Console.WriteLine($"A nota intermediaria é: {notasB[i]}");
+                Console.WriteLine($"A maior nota é: {notasC[i]}");
+
+
+                Console.WriteLine($"\nA média do aluno {alunos[i]} é: ");
 
                 //tostring em c# para formatar duas casas decimais
                 Console.WriteLine($"{media[i].ToString("F")}");
@@ -101,7 +148,7 @@ namespace SortingExample
 
                 if (passou[i])
                 {
-                    Console.WriteLine($"O aluno atingiu nota suficiente para passar!");
+                    Console.WriteLine($"\nO aluno atingiu nota suficiente para passar!");
                 }
                 else
                 {
@@ -135,10 +182,6 @@ namespace SortingExample
             }
             return passou;
         }
-
-
-
-
 
 
 
