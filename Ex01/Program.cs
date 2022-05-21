@@ -20,44 +20,45 @@ namespace SortingExample
             alunos[9] = "Sasuke";
 
             decimal[] notasA = new decimal[10];
-            notasA[0] = 50;
-            notasA[1] = 60;
-            notasA[2] = 60;
-            notasA[3] = 70;
-            notasA[4] = 60;
-            notasA[5] = 60;
-            notasA[6] = 30;
-            notasA[7] = 60;
-            notasA[8] = 60;
-            notasA[9] = 20;
+            notasA[0] = 100;
+            notasA[1] = 100;
+            notasA[2] = 100;
+            notasA[3] = 100;
+            notasA[4] = 100;
+            notasA[5] = 100;
+            notasA[6] = 100;
+            notasA[7] = 100;
+            notasA[8] = 100;
+            notasA[9] = 15;
 
             decimal[] notasB = new decimal[10];
             notasB[0] = 100;
-            notasB[1] = 60;
-            notasB[2] = 60;
-            notasB[3] = 10;
-            notasB[4] = 60;
-            notasB[5] = 60;
-            notasB[6] = 05;
-            notasB[7] = 60;
-            notasB[8] = 60;
-            notasB[9] = 10;
+            notasB[1] = 100;
+            notasB[2] = 100;
+            notasB[3] = 50;
+            notasB[4] = 50;
+            notasB[5] = 50;
+            notasB[6] = 50;
+            notasB[7] = 50;
+            notasB[8] = 50;
+            notasB[9] = 75;
 
             decimal[] notasC = new decimal[10];
-            notasC[0] = 35;
-            notasC[1] = 30;
-            notasC[2] = 60;
-            notasC[3] = 60;
-            notasC[4] = 60;
+            notasC[0] = 100;
+            notasC[1] = 100;
+            notasC[2] = 100;
+            notasC[3] = 100;
+            notasC[4] = 100;
             notasC[5] = 100;
-            notasC[6] = 20;
-            notasC[7] = 60;
-            notasC[8] = 60;
-            notasC[9] = 15;
+            notasC[6] = 50;
+            notasC[7] = 50;
+            notasC[8] = 50;
+            notasC[9] = 3;
 
             decimal[] notasOrdenadas = new decimal[3];
 
             decimal[] media = new decimal[10];
+            decimal mediaGeral = 0;
 
             bool[] passou = new bool[10];
             passou[0] = false;
@@ -84,7 +85,7 @@ namespace SortingExample
             }
 
 
-            ChecarMedia(media, notasA, notasB, notasC, alunos, passou);
+            ChecarMedia(media, notasA, notasB, notasC, alunos, passou, mediaGeral);
 
         }
 
@@ -125,12 +126,14 @@ namespace SortingExample
         }
 
 
-        static decimal[] ChecarMedia(decimal[] media, decimal[] notasA, decimal[] notasB, decimal[] notasC, string[] alunos, bool[] passou)
+        static decimal[] ChecarMedia(decimal[] media, decimal[] notasA, decimal[] notasB, decimal[] notasC, string[] alunos, bool[] passou, decimal mediaGeral)
         {
-
+            int contadorMediaGeral = 0;
             for (int i = 0; i < media.Length; i++)
             {
+                contadorMediaGeral++;
                 media[i] = (notasB[i] + notasC[i]) / 2;
+                mediaGeral = mediaGeral + media[i];
 
                 Console.WriteLine($"\nA menor nota é: {notasA[i]}");
                 Console.WriteLine($"A nota intermediaria é: {notasB[i]}");
@@ -156,8 +159,9 @@ namespace SortingExample
                 }
 
 
-
+                Console.WriteLine($"\nA média geral da turma é: {mediaGeral / contadorMediaGeral} ");
             }
+
 
             return media;
         }
