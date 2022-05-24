@@ -1,200 +1,160 @@
 ﻿using System;
-using System.Collections;
-namespace SortingExample
+
+namespace Ex03
 {
     class Program
     {
         static void Main(string[] args)
         {
+            int[] numeros = new int[3];
 
-            string[] alunos = new string[10];
-            alunos[0] = "Luiz";
-            alunos[1] = "Tales";
-            alunos[2] = "Collato";
-            alunos[3] = "Yuske";
-            alunos[4] = "Palu";
-            alunos[5] = "Cris";
-            alunos[6] = "Jhony";
-            alunos[7] = "Naruto";
-            alunos[8] = "Rock Lee";
-            alunos[9] = "Sasuke";
 
-            decimal[] notasA = new decimal[10];
-            notasA[0] = 100;
-            notasA[1] = 100;
-            notasA[2] = 100;
-            notasA[3] = 100;
-            notasA[4] = 100;
-            notasA[5] = 100;
-            notasA[6] = 100;
-            notasA[7] = 100;
-            notasA[8] = 100;
-            notasA[9] = 15;
 
-            decimal[] notasB = new decimal[10];
-            notasB[0] = 100;
-            notasB[1] = 100;
-            notasB[2] = 100;
-            notasB[3] = 50;
-            notasB[4] = 50;
-            notasB[5] = 50;
-            notasB[6] = 50;
-            notasB[7] = 50;
-            notasB[8] = 50;
-            notasB[9] = 75;
 
-            decimal[] notasC = new decimal[10];
-            notasC[0] = 100;
-            notasC[1] = 100;
-            notasC[2] = 100;
-            notasC[3] = 100;
-            notasC[4] = 100;
-            notasC[5] = 100;
-            notasC[6] = 50;
-            notasC[7] = 50;
-            notasC[8] = 50;
-            notasC[9] = 3;
-
-            decimal[] notasOrdenadas = new decimal[3];
-
-            decimal[] media = new decimal[10];
-            decimal mediaGeral = 0;
-
-            bool[] passou = new bool[10];
-            passou[0] = false;
-            passou[1] = false;
-            passou[2] = false;
-            passou[3] = false;
-            passou[4] = false;
-            passou[5] = false;
-            passou[6] = false;
-            passou[7] = false;
-            passou[8] = false;
-            passou[9] = false;
-
-            for (int contador = 0; contador < 10; contador++)
+            for (int p = 0; p < numeros.Length; p++)
             {
-                notasOrdenadas[0] = notasA[contador];
-                notasOrdenadas[1] = notasB[contador];
-                notasOrdenadas[2] = notasC[contador];
-                OrdenarArray(notasA, notasB, notasC, notasOrdenadas);
-                notasA[contador] = notasOrdenadas[0];
-                notasB[contador] = notasOrdenadas[1];
-                notasC[contador] = notasOrdenadas[2];
+                Console.Write("Digite um numero: ");
+                numeros[p] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            int contador1 = numeros[0];
+            int[] divisiveis1 = new int[contador1];
+            int contador2 = numeros[1];
+            int[] divisiveis2 = new int[contador2];
+            int contador3 = numeros[2];
+            int[] divisiveis3 = new int[contador3];
+
+
+
+
+
+            //CHECAR TODOS DIVISIVEIS ...
+            ChecarDivisiveis1(numeros, divisiveis1);
+            ChecarDivisiveis2(numeros, divisiveis2);
+            ChecarDivisiveis3(numeros, divisiveis3);
+
+
+
+
+            //escrever os divisiveis 
+            // ------------------------------------------------------------------------------------
+            // ------------------------------------------------------------------------------------
+            Console.Write($"Divisives de: {numeros[0]} ");
+            for (int p = 0; p < divisiveis1.Length; p++)
+            {
+                if (divisiveis1[p] > 0)
+                {
+                    Console.WriteLine($"{divisiveis1[p]}");
+                }
+            }
+
+            Console.Write($"Divisives de: {numeros[1]} ");
+            for (int p = 0; p < divisiveis2.Length; p++)
+            {
+                if (divisiveis2[p] > 0)
+                {
+                    Console.WriteLine($"{divisiveis2[p]}");
+                }
+            }
+
+            Console.Write($"Divisives de: {numeros[2]} ");
+            for (int p = 0; p < divisiveis3.Length; p++)
+            {
+                if (divisiveis3[p] > 0)
+                {
+                    Console.WriteLine($"{divisiveis3[p]}");
+                }
+            }
+
+            //ESCREVER O MDC
+            ChecarMDC(divisiveis1, divisiveis2, divisiveis3);
+
+        }
+        static int[] ChecarDivisiveis1(int[] numeros, int[] divisiveis1)
+        {
+            for (int i = 1; i < numeros[0]; i++)
+            {
+
+
+                if (numeros[0] % i == 0)
+                {
+                    divisiveis1[i] = i;
+                }
 
             }
 
-
-            ChecarMedia(media, notasA, notasB, notasC, alunos, passou, mediaGeral);
-
+            return divisiveis1;
         }
 
-
-        static void Sair()
+        static int[] ChecarDivisiveis2(int[] numeros, int[] divisiveis2)
         {
-            System.Environment.Exit(0);
-        }
-
-        static decimal[] OrdenarArray(decimal[] notasA, decimal[] notasB, decimal[] notasC, decimal[] notasOrdenadas)
-        {
-            bool flag = true;
-            decimal temp;
-            int numLength = notasOrdenadas.Length;
-
-
-
-
-
-            //sorting an array  
-            for (int i = 1; (i <= (numLength - 1)) && flag; i++)
+            for (int i = 1; i < numeros[1]; i++)
             {
-                flag = false;
-                for (int j = 0; j < (numLength - 1); j++)
+
+
+
+                if (numeros[1] % i == 0)
                 {
-                    if (notasOrdenadas[j + 1] < notasOrdenadas[j])
+                    divisiveis2[i] = i;
+                }
+
+            }
+
+            return divisiveis2;
+        }
+
+        static int[] ChecarDivisiveis3(int[] numeros, int[] divisiveis3)
+        {
+            for (int i = 1; i < numeros[2]; i++)
+            {
+
+
+                if (numeros[2] % i == 0)
+                {
+                    divisiveis3[i] = i;
+                }
+
+            }
+
+            return divisiveis3;
+        }
+
+        static int[] ChecarMDC(int[] divisiveis1, int[] divisiveis2, int[] divisiveis3)
+        {
+            int divisorMaximo1 = 0;
+            int divisorMaximo2 = 0;
+            int divisorMaximo3 = 0;
+
+
+
+
+
+            for (int a = 0; a < divisiveis1.Length; a++)
+            {
+                for (int b = 0; b < divisiveis2.Length; b++)
+                {
+                    if (divisiveis1[a] == divisiveis2[b])
                     {
-                        temp = notasOrdenadas[j];
-                        notasOrdenadas[j] = notasOrdenadas[j + 1];
-                        notasOrdenadas[j + 1] = temp;
-                        flag = true;
+                        divisorMaximo1 = divisiveis1[a];
+                        divisorMaximo2 = divisiveis2[b];
                     }
-                }
-            }
-
-            return (notasOrdenadas);
-            // Array.Sort(valor);
-        }
 
 
-        static decimal[] ChecarMedia(decimal[] media, decimal[] notasA, decimal[] notasB, decimal[] notasC, string[] alunos, bool[] passou, decimal mediaGeral)
-        {
-            int contadorMediaGeral = 0;
-            for (int i = 0; i < media.Length; i++)
-            {
-                contadorMediaGeral++;
-                media[i] = (notasB[i] + notasC[i]) / 2;
-                mediaGeral = mediaGeral + media[i];
-
-                Console.WriteLine($"\nA menor nota é: {notasA[i]}");
-                Console.WriteLine($"A nota intermediaria é: {notasB[i]}");
-                Console.WriteLine($"A maior nota é: {notasC[i]}");
-
-
-                Console.WriteLine($"\nA média do aluno {alunos[i]} é: ");
-
-                //tostring em c# para formatar duas casas decimais
-                Console.WriteLine($"{media[i].ToString("F")}");
-
-                passou = Passou(passou, media);
-
-                Console.WriteLine($"{passou[i]}");
-
-                if (passou[i])
-                {
-                    Console.WriteLine($"\nO aluno atingiu nota suficiente para passar!");
-                }
-                else
-                {
-                    Console.WriteLine($"O aluno reprovou!");
-                }
-
-
-                Console.WriteLine($"\nA média geral da turma é: {mediaGeral / contadorMediaGeral} ");
-            }
-
-
-            return media;
-        }
-
-        static bool[] Passou(bool[] passou, decimal[] media)
-        {
-            decimal notaMinima = 70;
-
-            for (int i = 0; i < media.Length; i++)
-            {
-                decimal mediaTeste = Convert.ToDecimal(media[i]);
-
-                if (mediaTeste > notaMinima)
-                {
-                    passou[i] = true;
-                }
-                else
-                {
-                    passou[i] = false;
                 }
 
             }
-            return passou;
+
+
+
+            Console.Write($"Dvisor maximo 1: {divisorMaximo1}");
+            Console.Write($"Dvisor maximo 2: {divisorMaximo2}");
+            Console.Write($"Dvisor maximo 3: {divisorMaximo3}");
+            return divisiveis3;
         }
-
-
-
-
-
-
 
 
 
 
     }
+
 }

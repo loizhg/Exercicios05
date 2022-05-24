@@ -25,11 +25,20 @@ namespace Ex03
             int[] divisiveis3 = new int[contador3];
 
 
+
+
+
+            //CHECAR TODOS DIVISIVEIS ...
             ChecarDivisiveis1(numeros, divisiveis1);
             ChecarDivisiveis2(numeros, divisiveis2);
             ChecarDivisiveis3(numeros, divisiveis3);
 
 
+
+
+            //escrever os divisiveis 
+            // ------------------------------------------------------------------------------------
+            // ------------------------------------------------------------------------------------
             Console.Write($"Divisives de: {numeros[0]} ");
             for (int p = 0; p < divisiveis1.Length; p++)
             {
@@ -57,6 +66,8 @@ namespace Ex03
                 }
             }
 
+            //ESCREVER O MDC
+            ChecarMDC(divisiveis1, divisiveis2, divisiveis3);
 
         }
         static int[] ChecarDivisiveis1(int[] numeros, int[] divisiveis1)
@@ -107,6 +118,40 @@ namespace Ex03
 
             return divisiveis3;
         }
+
+        static int[] ChecarMDC(int[] divisiveis1, int[] divisiveis2, int[] divisiveis3)
+        {
+            int divisorMaximo1 = 0;
+            int divisorMaximo2 = 0;
+            int divisorMaximo3 = 0;
+
+
+
+
+
+            for (int a = 0; a < divisiveis1.Length; a++)
+            {
+                for (int b = 0; b < divisiveis2.Length; b++)
+                {
+                    if (divisiveis1[a] == divisiveis2[b])
+                    {
+                        divisorMaximo1 = divisiveis1[a];
+                        divisorMaximo2 = divisiveis2[b];
+                    }
+                    
+
+                }
+
+            }
+
+
+
+            Console.Write($"Dvisor maximo 1: {divisorMaximo1}");
+            Console.Write($"Dvisor maximo 2: {divisorMaximo2}");
+            Console.Write($"Dvisor maximo 3: {divisorMaximo3}");
+            return divisiveis3;
+        }
+
 
 
 
