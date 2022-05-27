@@ -138,7 +138,7 @@ namespace Ex03
                         divisorMaximo1 = divisiveis1[a];
                         divisorMaximo2 = divisiveis2[b];
                     }
-                    
+
 
                 }
 

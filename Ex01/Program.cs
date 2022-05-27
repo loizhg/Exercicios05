@@ -20,7 +20,7 @@ namespace SortingExample
             alunos[9] = "Sasuke";
 
             decimal[] notasA = new decimal[10];
-            notasA[0] = 100;
+            notasA[0] = 65;
             notasA[1] = 100;
             notasA[2] = 100;
             notasA[3] = 100;
@@ -44,7 +44,7 @@ namespace SortingExample
             notasB[9] = 75;
 
             decimal[] notasC = new decimal[10];
-            notasC[0] = 100;
+            notasC[0] = 10;
             notasC[1] = 100;
             notasC[2] = 100;
             notasC[3] = 100;
@@ -83,7 +83,7 @@ namespace SortingExample
                 notasC[contador] = notasOrdenadas[2];
 
             }
-
+           
 
             ChecarMedia(media, notasA, notasB, notasC, alunos, passou, mediaGeral);
 
