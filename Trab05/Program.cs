@@ -1,83 +1,39 @@
 ﻿using System;
 
-namespace Ex04._02
+namespace mmc
 {
     class Program
     {
         static void Main(string[] args)
         {
-            int n1 = 50;
-            int n2 = 60;
-            int n3 = 30;
-            int contadorN1 = n1;
-            int contadorN2 = n2;
-            int contadorN3 = n3;
-            int[] diviseiveisN1 = new int[contadorN1];
-            int[] diviseiveisN2 = new int[contadorN2];
-            int[] diviseiveisN3 = new int[contadorN3];
+            int i = 2;
+            int n1sobra = Convert.ToInt32(Console.ReadLine());
+            int n2sobra = Convert.ToInt32(Console.ReadLine()); ;
+            int n3sobra = Convert.ToInt32(Console.ReadLine()); ;
+            int acumulador = 1;
 
-
-            int contador = 1;
-            
-
-           
-
-
-
-            int divisor = 2;
-
-            do
+            while (n1sobra > 1 || n2sobra > 1 || n3sobra > 1)
             {
-                Console.WriteLine($"Divisor {divisor}");
-                
-                if (n1 % divisor == 0)
+                if (n1sobra % i == 0 || n2sobra % i == 0 || n3sobra % i == 0)
                 {
-                    Console.WriteLine($"Numero {n1}");                    
-                    n1 = (n1 / divisor);
-                    Console.WriteLine($"{n1}");
-                    diviseiveisN1[contador] = divisor;
-                    
 
+                    if (n1sobra % i == 0)
+                        n1sobra = n1sobra / i;
+                    if (n2sobra % i == 0)
+                        n2sobra = n2sobra / i;
+                    if (n3sobra % i == 0)
+                        n3sobra = n3sobra / i;
+
+                    acumulador *= i;
 
                 }
-                if (n2 % divisor == 0)
-                {
-                    Console.WriteLine($"Numero {n2}");                    
-                    n2 = (n2 / divisor);
-                    Console.WriteLine($"{n2}");
-                    diviseiveisN2[contador] = divisor;
-                    
-                }
-                if (n3 % divisor == 0)
-                {
-                    Console.WriteLine($"Numero {n3}");                    
-                    n3 = (n3 / divisor);
-                    Console.WriteLine($"{n3}");
-                    diviseiveisN3[contador] = divisor;
-                    
-                }                
                 else
-                {                    
-                    contador++;
-                    divisor++;                  
+                {
+                    i++;
                 }
-
-                Console.WriteLine($"CONTADOR {contador}");
-
-
-            } while (n1 != 1 && n2 != 1 && n3 != 1);
-            divisor = 2;
-
-
-            
-            
-
+            }
+            Console.WriteLine(acumulador);
 
         }
-
-
-
-
-
     }
 }
